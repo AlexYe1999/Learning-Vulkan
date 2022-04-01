@@ -9,15 +9,12 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 find_package(Vulkan)
-
 if (Vulkan_FOUND)
-    message(STATUS "Vulkan Packge Found   : ")
     message(STATUS "Vulkan Packge Include : " ${Vulkan_INCLUDE_DIR})
     message(STATUS "Vulkan Packge Lib     : " ${Vulkan_LIBRARIES})
+    include_directories(${Vulkan_INCLUDE_DIR})
 else(Vulkan_FOUND)
     message(FATAL_ERROR "Vulkan Not Found")
 endif(Vulkan_FOUND)
-
-include_directories(${Vulkan_INCLUDE_DIR})
 
 add_subdirectory(source)
